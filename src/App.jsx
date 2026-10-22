@@ -13,15 +13,11 @@ import QHSE from './components/QHSE';
 import CallToAction from './components/CallToAction';
 import Footer from './components/Footer';
 import InnerPages from './components/InnerPages';
-import ClientChecklistModal from './components/ClientChecklistModal';
-import { Palette, Globe, FileCheck2, ArrowUp } from 'lucide-react';
 
 export default function App() {
   const [lang, setLang] = useState('fr');
   const [theme, setTheme] = useState('sovereign'); // sovereign | industrial | modern
   const [activePage, setActivePage] = useState('home'); // home | about | activities | projects | equipment | contact
-  const [isChecklistOpen, setIsChecklistOpen] = useState(false);
-  const [showScrollTop, setShowScrollTop] = useState(false);
 
   const t = translations[lang];
 
@@ -29,15 +25,6 @@ export default function App() {
   useEffect(() => {
     document.body.className = `theme-${theme}`;
   }, [theme]);
-
-  // Scroll listener for back to top
-  useEffect(() => {
-    const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 400);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const scrollToSection = (id) => {
     setActivePage('home');
@@ -55,7 +42,7 @@ export default function App() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', width: '100%', overflowX: 'hidden' }}>
       {/* Primary Header */}
       <Navbar
         lang={lang}
@@ -65,15 +52,14 @@ export default function App() {
         activePage={activePage}
         setActivePage={setActivePage}
         t={t}
-        openChecklist={() => setIsChecklistOpen(true)}
         openRfq={handleOpenRfq}
       />
 
       {/* Main Body */}
-      <main style={{ flex: 1 }}>
+      <main style={{ flex: 1, width: '100%' }}>
         {activePage === 'home' ? (
           <>
-            {/* Section 1: Hero */}
+            {/* Section 1: Hero (Short hero inspired by Parlym layout) */}
             <Hero
               t={t}
               onProjectsClick={() => scrollToSection('projects-section')}
@@ -144,104 +130,6 @@ export default function App() {
           setActivePage(id);
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
-        onOpenChecklist={() => setIsChecklistOpen(true)}
-      />
-
-      {/* Persistent Client Reviewer Controls Floating Pill */}
-      <div className="floating-bar">
-        {/* Theme pill */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.78rem', color: '#cbd5e1' }}>
-          <Palette size={14} style={{ color: 'var(--accent-gold)' }} />
-          <span style={{ fontWeight: 600 }}>Option:</span>
-          <select
-            value={theme}
-            onChange={(e) => setTheme(e.target.value)}
-            style={{
-              backgroundColor: 'var(--bg-primary)',
-              color: 'var(--accent-gold)',
-              border: '1px solid var(--border-subtle)',
-              borderRadius: '4px',
-              padding: '0.2rem 0.4rem',
-              fontSize: '0.75rem',
-              fontWeight: 700,
-              cursor: 'pointer'
-            }}
-          >
-            <option value="sovereign">1. Souverain (Parlym)</option>
-            <option value="industrial">2. Industriel Lourd</option>
-            <option value="modern">3. Transition Énergétique</option>
-          </select>
-        </div>
-
-        <div style={{ width: '1px', height: '16px', backgroundColor: 'var(--border-subtle)' }} />
-
-        {/* Language button */}
-        <button
-          onClick={() => setLang(lang === 'fr' ? 'en' : 'fr')}
-          style={{
-            background: 'none',
-            border: 'none',
-            color: '#f8fafc',
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '0.35rem',
-            fontSize: '0.78rem',
-            fontWeight: 700,
-            cursor: 'pointer'
-          }}
-          title="Basculer Français / Anglais"
-        >
-          <Globe size={14} style={{ color: 'var(--accent-gold)' }} />
-          <span>{lang.toUpperCase()}</span>
-        </button>
-
-        <div style={{ width: '1px', height: '16px', backgroundColor: 'var(--border-subtle)' }} />
-
-        {/* Checklist button */}
-        <button
-          onClick={() => setIsChecklistOpen(true)}
-          style={{
-            background: 'var(--accent-gold-soft)',
-            border: '1px solid var(--accent-gold)',
-            color: 'var(--accent-gold)',
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '0.35rem',
-            padding: '0.3rem 0.65rem',
-            borderRadius: '9999px',
-            fontSize: '0.78rem',
-            fontWeight: 700,
-            cursor: 'pointer'
-          }}
-        >
-          <FileCheck2 size={13} />
-          <span>Brief & Spécifications</span>
-        </button>
-
-        {/* Back to top if scrolled */}
-        {showScrollTop && (
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            style={{
-              background: 'none',
-              border: 'none',
-              color: '#94a3b8',
-              cursor: 'pointer',
-              padding: '0.2rem',
-              display: 'flex',
-              alignItems: 'center'
-            }}
-            title="Haut de page"
-          >
-            <ArrowUp size={15} />
-          </button>
-        )}
-      </div>
-
-      {/* Client Brief & Checklist Modal */}
-      <ClientChecklistModal
-        isOpen={isChecklistOpen}
-        onClose={() => setIsChecklistOpen(false)}
       />
     </div>
   );

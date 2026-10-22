@@ -3,11 +3,11 @@ import { Award, Fuel, Construction, ShieldCheck, Globe2 } from 'lucide-react';
 
 export default function KeyFigures({ t }) {
   const icons = [
-    <Award size={28} />,
-    <Fuel size={28} />,
-    <Construction size={28} />,
-    <ShieldCheck size={28} />,
-    <Globe2 size={28} />
+    <Award size={24} />,
+    <Fuel size={24} />,
+    <Construction size={24} />,
+    <ShieldCheck size={24} />,
+    <Globe2 size={24} />
   ];
 
   return (
@@ -23,11 +23,11 @@ export default function KeyFigures({ t }) {
           <p className="section-desc">{t.figures.desc}</p>
         </div>
 
-        {/* Figures Grid */}
+        {/* Figures Grid - 100% Responsive */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-          gap: '1.5rem'
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 190px), 1fr))',
+          gap: '1rem'
         }}>
           {t.figures.list.map((item, idx) => (
             <div 
@@ -38,49 +38,51 @@ export default function KeyFigures({ t }) {
                 flexDirection: 'column',
                 alignItems: 'center',
                 textAlign: 'center',
-                padding: '2.5rem 1.5rem',
+                padding: 'clamp(1.5rem, 3vw, 2.2rem) 1rem',
                 position: 'relative'
               }}
             >
               <div style={{
                 color: 'var(--accent-gold)',
-                marginBottom: '1rem',
+                marginBottom: '0.75rem',
                 background: 'var(--accent-gold-soft)',
-                padding: '0.75rem',
+                padding: '0.6rem',
                 borderRadius: '8px'
               }}>
                 {icons[idx]}
               </div>
 
               <div style={{
-                fontSize: 'clamp(2.4rem, 4vw, 3.2rem)',
+                fontSize: 'clamp(2rem, 3.5vw, 2.8rem)',
                 fontWeight: 800,
                 color: 'var(--text-main)',
                 fontFamily: 'var(--font-heading)',
                 lineHeight: 1,
-                marginBottom: '0.4rem',
+                marginBottom: '0.35rem',
                 display: 'flex',
                 alignItems: 'baseline',
-                gap: '0.2rem'
+                gap: '0.2rem',
+                flexWrap: 'wrap',
+                justifyContent: 'center'
               }}>
                 <span>{item.number}</span>
                 {item.unit && (
-                  <span style={{ fontSize: '1.25rem', color: 'var(--accent-gold)', fontWeight: 700 }}>
+                  <span style={{ fontSize: '1.1rem', color: 'var(--accent-gold)', fontWeight: 700 }}>
                     {item.unit}
                   </span>
                 )}
               </div>
 
               <div style={{
-                fontSize: '0.95rem',
+                fontSize: '0.9rem',
                 fontWeight: 700,
                 color: 'var(--text-main)',
-                marginBottom: '0.35rem'
+                marginBottom: '0.25rem'
               }}>
                 {item.label}
               </div>
 
-              <div style={{ fontSize: '0.75rem', color: 'var(--text-dim)', lineHeight: 1.4 }}>
+              <div style={{ fontSize: '0.74rem', color: 'var(--text-dim)', lineHeight: 1.35 }}>
                 {item.note}
               </div>
             </div>

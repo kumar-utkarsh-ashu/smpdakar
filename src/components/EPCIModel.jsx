@@ -6,7 +6,6 @@ import {
   Anchor, 
   Landmark, 
   Cog, 
-  ArrowRight,
   CheckCircle2
 } from 'lucide-react';
 
@@ -14,12 +13,12 @@ export default function EPCIModel({ t }) {
   const [selectedStep, setSelectedStep] = useState(0);
 
   const icons = [
-    <Compass size={24} />,
-    <Truck size={24} />,
-    <Hammer size={24} />,
-    <Anchor size={24} />,
-    <Landmark size={24} />,
-    <Cog size={24} />
+    <Compass size={22} />,
+    <Truck size={22} />,
+    <Hammer size={22} />,
+    <Anchor size={22} />,
+    <Landmark size={22} />,
+    <Cog size={22} />
   ];
 
   return (
@@ -35,13 +34,13 @@ export default function EPCIModel({ t }) {
           <p className="section-desc">{t.epci.desc}</p>
         </div>
 
-        {/* 6-Step Diagram Grid */}
+        {/* 6-Step Diagram Grid - 100% Mobile Responsive */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-          gap: '1rem',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 160px), 1fr))',
+          gap: '0.85rem',
           position: 'relative',
-          marginBottom: '2rem'
+          marginBottom: '1.75rem'
         }}>
           {t.epci.steps.map((step, idx) => {
             const isSelected = selectedStep === idx;
@@ -63,23 +62,23 @@ export default function EPCIModel({ t }) {
                     ? '1px dashed var(--accent-gold)' 
                     : '1px solid var(--border-subtle)',
                   borderRadius: '8px',
-                  padding: '1.4rem 1rem',
+                  padding: '1.15rem 0.85rem',
                   cursor: 'pointer',
                   position: 'relative',
                   transition: 'all 0.2s ease',
-                  transform: isSelected ? 'translateY(-4px)' : 'none',
-                  boxShadow: isSelected ? '0 12px 25px -8px var(--accent-gold-soft)' : 'none'
+                  transform: isSelected ? 'translateY(-2px)' : 'none',
+                  boxShadow: isSelected ? '0 8px 20px -6px var(--accent-gold-soft)' : 'none'
                 }}
               >
                 {/* Step Number */}
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
                   <span style={{
-                    fontSize: '0.85rem',
+                    fontSize: '0.78rem',
                     fontWeight: 800,
                     fontFamily: 'var(--font-heading)',
                     color: isSelected ? 'var(--accent-gold)' : 'var(--text-dim)',
                     background: 'rgba(255, 255, 255, 0.05)',
-                    padding: '0.2rem 0.5rem',
+                    padding: '0.15rem 0.4rem',
                     borderRadius: '4px'
                   }}>
                     {step.num}
@@ -92,30 +91,31 @@ export default function EPCIModel({ t }) {
 
                 {/* Title */}
                 <h3 style={{
-                  fontSize: '1.05rem',
+                  fontSize: '0.98rem',
                   fontWeight: 700,
-                  marginBottom: '0.35rem',
-                  color: isSelected ? 'var(--text-main)' : isFinancing ? 'var(--accent-gold)' : 'var(--text-main)'
+                  marginBottom: '0.25rem',
+                  color: isSelected ? 'var(--text-main)' : isFinancing ? 'var(--accent-gold)' : 'var(--text-main)',
+                  lineHeight: 1.25
                 }}>
                   {step.title}
                 </h3>
-                <div style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-dim)', textTransform: 'uppercase' }}>
+                <div style={{ fontSize: '0.7rem', fontWeight: 600, color: 'var(--text-dim)', textTransform: 'uppercase' }}>
                   {step.sub}
                 </div>
 
                 {isFinancing && (
                   <span style={{
                     position: 'absolute',
-                    top: '-10px',
-                    right: '10px',
-                    fontSize: '0.65rem',
+                    top: '-8px',
+                    right: '8px',
+                    fontSize: '0.6rem',
                     fontWeight: 800,
                     backgroundColor: 'var(--accent-gold)',
                     color: '#ffffff',
-                    padding: '0.15rem 0.45rem',
+                    padding: '0.1rem 0.4rem',
                     borderRadius: '3px'
                   }}>
-                    Différenciateur VF
+                    VF
                   </span>
                 )}
               </div>
@@ -128,37 +128,44 @@ export default function EPCIModel({ t }) {
           backgroundColor: 'var(--bg-surface)',
           border: '1px solid var(--border-strong)',
           borderRadius: '8px',
-          padding: '2rem',
+          padding: 'clamp(1.25rem, 3vw, 2rem)',
           display: 'flex',
           flexDirection: 'column',
           gap: '1rem',
           boxShadow: 'var(--shadow-card)'
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
-            <span className="badge" style={{ fontSize: '0.8rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap' }}>
+            <span className="badge" style={{ fontSize: '0.75rem' }}>
               Étape {t.epci.steps[selectedStep].num} • {t.epci.steps[selectedStep].title}
             </span>
-            <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>
+            <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
               {t.epci.steps[selectedStep].sub}
             </span>
           </div>
 
-          <p style={{ fontSize: '1.05rem', color: 'var(--text-main)', lineHeight: 1.6 }}>
+          <p style={{ fontSize: 'clamp(0.92rem, 1.8vw, 1.02rem)', color: 'var(--text-main)', lineHeight: 1.6 }}>
             {t.epci.steps[selectedStep].desc}
           </p>
 
-          <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', paddingTop: '1rem', borderTop: '1px solid var(--border-subtle)', fontSize: '0.85rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#cbd5e1' }}>
-              <CheckCircle2 size={16} style={{ color: 'var(--accent-gold)' }} />
-              <span>Livrables conformes aux codes internationaux (API, ASME, Eurocodes)</span>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))',
+            gap: '0.75rem',
+            paddingTop: '1rem',
+            borderTop: '1px solid var(--border-subtle)',
+            fontSize: '0.82rem'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.45rem', color: '#cbd5e1' }}>
+              <CheckCircle2 size={15} style={{ color: 'var(--accent-gold)', flexShrink: 0, marginTop: '2px' }} />
+              <span>Conforme aux codes internationaux (API, ASME, Eurocodes)</span>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#cbd5e1' }}>
-              <CheckCircle2 size={16} style={{ color: 'var(--accent-gold)' }} />
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.45rem', color: '#cbd5e1' }}>
+              <CheckCircle2 size={15} style={{ color: 'var(--accent-gold)', flexShrink: 0, marginTop: '2px' }} />
               <span>Contrôles qualité CND & traçabilité matière complète</span>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#cbd5e1' }}>
-              <CheckCircle2 size={16} style={{ color: 'var(--accent-gold)' }} />
-              <span>Coordination intégrée avec le Port et les chantiers de Dakar</span>
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.45rem', color: '#cbd5e1' }}>
+              <CheckCircle2 size={15} style={{ color: 'var(--accent-gold)', flexShrink: 0, marginTop: '2px' }} />
+              <span>Coordination logistique directe via le Port de Dakar</span>
             </div>
           </div>
         </div>
