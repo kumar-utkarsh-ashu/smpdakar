@@ -1,25 +1,91 @@
 import React from 'react';
 
 export default function ClientsGrid({ t }) {
-  const clients = [
-    { name: "TotalEnergies", industry: "Oil & Gas Major", type: "Multinational" },
-    { name: "Vivo Energy (Shell)", industry: "Retail & Storage", type: "Pan-African" },
-    { name: "Société Africaine de Raffinage (SAR)", industry: "Raffinage National", type: "National (Sénégal)" },
-    { name: "ICS (Industries Chimiques du Sénégal)", industry: "Chimie & Mines", type: "Indorama Group" },
-    { name: "Eramet (Grande Côte Operations)", industry: "Mines & Sables Titanifères", type: "International" },
-    { name: "Toro Gold / Resolute Mining", industry: "Mines d'Or (Mako)", type: "International" },
-    { name: "Oryx Energies", industry: "Stockage Hydrocarbures & GPL", type: "Pan-African" },
-    { name: "Puma Energy", industry: "Terminaux Pétroliers", type: "Global" },
-    { name: "GNPC (Gambia National Petroleum)", industry: "Société Nationale de Pétrole", type: "Sovereign State" },
-    { name: "Touba Gaz", industry: "Distribution GPL", type: "Regional" },
-    { name: "PETROSEN", industry: "Compagnie Pétrolière Nationale", type: "Sovereign State" },
-    { name: "Port Autonome de Dakar (PAD)", industry: "Logistique & Appontements", type: "Port Authority" }
+  const clientLogos = [
+    { 
+      name: "TotalEnergies", 
+      logo: "/images/clients/total.png", 
+      industry: "Major Pétrolière & Gaz",
+      bgLight: true
+    },
+    { 
+      name: "Société Africaine de Raffinage (SAR)", 
+      logo: "/images/clients/sar.svg", 
+      industry: "Raffinerie Nationale de Mbao",
+      bgLight: false
+    },
+    { 
+      name: "ICS (Industries Chimiques du Sénégal)", 
+      logo: "/images/clients/ics.png", 
+      industry: "Chimie & Engrais (Indorama)",
+      bgLight: true
+    },
+    { 
+      name: "Grande Côte Operations (Eramet)", 
+      logo: "/images/clients/gco.png", 
+      industry: "Mines & Sables Titanifères",
+      bgLight: true
+    },
+    { 
+      name: "Senelec", 
+      logo: "/images/clients/senelec.png", 
+      industry: "Électricité du Sénégal",
+      bgLight: true
+    },
+    { 
+      name: "Vivo Energy (Shell)", 
+      logo: "/images/clients/vivo.svg", 
+      industry: "Distribution & Dépôts Carburants",
+      bgLight: false
+    },
+    { 
+      name: "Oryx Energies", 
+      logo: "/images/clients/oryx.svg", 
+      industry: "Terminaux Pétroliers & GPL",
+      bgLight: false
+    },
+    { 
+      name: "Puma Energy", 
+      logo: "/images/clients/puma.svg", 
+      industry: "Stockage Hydrocarbures Mondial",
+      bgLight: false
+    },
+    { 
+      name: "DP World Dakar", 
+      logo: "/images/clients/dpworld.png", 
+      industry: "Infrastructures Portuaires",
+      bgLight: true
+    },
+    { 
+      name: "OLA Energy (OiLibya)", 
+      logo: "/images/clients/oilibya.png", 
+      industry: "Distribution & Lubrifiants",
+      bgLight: true
+    },
+    { 
+      name: "Teranga Gold / Sabodala", 
+      logo: "/images/clients/teranga-gold.png", 
+      industry: "Exploitation Minière Aurifère",
+      bgLight: true
+    },
+    { 
+      name: "Touba Gaz", 
+      logo: "/images/clients/toubagaz.svg", 
+      industry: "Gaz Propane & Butane GPL",
+      bgLight: false
+    },
+    { 
+      name: "PETROSEN", 
+      logo: "/images/clients/petrosen.svg", 
+      industry: "Compagnie Pétrolière Nationale",
+      bgLight: false
+    }
   ];
 
   return (
     <section className="section-padding" style={{ backgroundColor: 'var(--bg-primary)', borderBottom: '1px solid var(--border-subtle)' }}>
       <div className="container">
-        {/* Header */}
+        {/* Section Header */}
         <div className="section-header center">
           <div className="section-tag">
             <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: 'var(--accent-gold)' }}></span>
@@ -32,12 +98,13 @@ export default function ClientsGrid({ t }) {
         {/* Corporate Client Logo Grid */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))',
-          gap: '1.25rem'
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))',
+          gap: '1rem',
+          alignItems: 'stretch'
         }}>
-          {clients.map((c, i) => (
+          {clientLogos.map((client, idx) => (
             <div
-              key={i}
+              key={idx}
               className="card"
               style={{
                 display: 'flex',
@@ -45,25 +112,60 @@ export default function ClientsGrid({ t }) {
                 justifyContent: 'center',
                 alignItems: 'center',
                 textAlign: 'center',
-                padding: '1.6rem 1rem',
-                minHeight: '110px',
-                transition: 'all 0.2s ease'
+                padding: '1.25rem 1rem',
+                minHeight: '125px',
+                transition: 'all 0.25s ease',
+                position: 'relative'
               }}
             >
+              {/* Logo Image Box */}
               <div style={{
-                fontSize: '1.05rem',
-                fontWeight: 800,
-                color: 'var(--text-main)',
-                letterSpacing: '-0.01em',
-                marginBottom: '0.35rem'
+                height: '60px',
+                width: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '0.65rem',
+                padding: '0.35rem',
+                borderRadius: '6px',
+                backgroundColor: client.bgLight ? '#ffffff' : 'transparent',
+                boxShadow: client.bgLight ? '0 2px 6px rgba(0,0,0,0.06)' : 'none'
               }}>
-                {c.name}
+                <img
+                  src={client.logo}
+                  alt={client.name}
+                  style={{
+                    maxHeight: '48px',
+                    maxWidth: '140px',
+                    objectFit: 'contain',
+                    transition: 'transform 0.2s ease'
+                  }}
+                  onMouseOver={(e) => e.target.style.transform = 'scale(1.05)'}
+                  onMouseOut={(e) => e.target.style.transform = 'scale(1)'}
+                  onError={(e) => {
+                    // Fallback to text styling if image fails
+                    e.target.style.display = 'none';
+                  }}
+                />
               </div>
-              <div style={{ fontSize: '0.72rem', color: 'var(--accent-gold)', fontWeight: 600 }}>
-                {c.industry}
+
+              {/* Company & Industry Label */}
+              <div style={{
+                fontSize: '0.85rem',
+                fontWeight: 700,
+                color: 'var(--text-main)',
+                lineHeight: 1.25,
+                marginBottom: '0.2rem'
+              }}>
+                {client.name}
               </div>
-              <div style={{ fontSize: '0.65rem', color: 'var(--text-dim)', textTransform: 'uppercase', letterSpacing: '0.05em', marginTop: '0.2rem' }}>
-                {c.type}
+
+              <div style={{
+                fontSize: '0.7rem',
+                color: 'var(--accent-gold)',
+                fontWeight: 600
+              }}>
+                {client.industry}
               </div>
             </div>
           ))}

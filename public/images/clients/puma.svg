@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 80">
+  <rect width="240" height="80" rx="8" fill="transparent"/>
+  <polygon points="26,24 54,24 62,56 34,56" fill="#16a34a"/>
+  <text x="72" y="46" font-family="'Space Grotesk', sans-serif" font-size="24" font-weight="900" fill="#ffffff" letter-spacing="2">PUMA</text>
+  <text x="73" y="58" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="700" fill="#16a34a" letter-spacing="2">ENERGY</text>
+</svg>

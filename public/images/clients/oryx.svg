@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 80">
+  <rect width="240" height="80" rx="8" fill="transparent"/>
+  <circle cx="42" cy="40" r="22" fill="#dc2626"/>
+  <path d="M35 32 Q42 22, 49 32 Q42 52, 35 32" fill="#ffffff"/>
+  <text x="74" y="46" font-family="'Space Grotesk', sans-serif" font-size="24" font-weight="900" fill="#ffffff" letter-spacing="1.5">ORYX</text>
+  <text x="75" y="58" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="700" fill="#dc2626" letter-spacing="2">ENERGIES</text>
+</svg>

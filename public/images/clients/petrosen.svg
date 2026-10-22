@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 80">
+  <rect width="240" height="80" rx="8" fill="transparent"/>
+  <circle cx="40" cy="40" r="22" fill="#15803d"/>
+  <circle cx="40" cy="40" r="14" fill="#facc15"/>
+  <circle cx="40" cy="40" r="6" fill="#b91c1c"/>
+  <text x="70" y="44" font-family="'Space Grotesk', sans-serif" font-size="20" font-weight="900" fill="#ffffff" letter-spacing="1">PETROSEN</text>
+  <text x="72" y="58" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="700" fill="#facc15" letter-spacing="1">SOCIÉTÉ DES PÉTROLES</text>
+</svg>
