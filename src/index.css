@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SMP DAKAR DESIGN SYSTEM - 100% RESPONSIVE & HIGH CONTRAST THEMES
+   SMP DAKAR DESIGN SYSTEM - 100% RESPONSIVE & ANIMATED CSS
    ========================================================================== */
 
 :root {
@@ -30,6 +30,8 @@
   --topbar-text: #94a3b8;
   --map-land: #0e223d;
   --map-text: #e2e8f0;
+  --logo-card-bg: rgba(255, 255, 255, 0.05);
+  --logo-card-hover: rgba(255, 255, 255, 0.12);
 }
 
 body.theme-industrial {
@@ -53,6 +55,8 @@ body.theme-industrial {
   --topbar-text: #9ca3af;
   --map-land: #1c222b;
   --map-text: #f3f4f6;
+  --logo-card-bg: rgba(255, 255, 255, 0.04);
+  --logo-card-hover: rgba(234, 88, 12, 0.12);
 }
 
 body.theme-modern {
@@ -64,10 +68,10 @@ body.theme-modern {
   --bg-surface: #e2e8f0;
   --border-subtle: #cbd5e1;
   --border-strong: #94a3b8;
-  --text-main: #0f172a; /* Ultra-crisp black-slate */
-  --text-muted: #334155; /* High contrast dark text */
+  --text-main: #0f172a;
+  --text-muted: #334155;
   --text-dim: #64748b;
-  --accent-gold: #0284c7; /* Vibrant Engineering Blue */
+  --accent-gold: #0284c7;
   --accent-gold-hover: #0369a1;
   --accent-gold-soft: rgba(2, 132, 199, 0.12);
   --accent-blue: #0f766e;
@@ -78,6 +82,8 @@ body.theme-modern {
   --topbar-text: #cbd5e1;
   --map-land: #cbd5e1;
   --map-text: #0f172a;
+  --logo-card-bg: #ffffff;
+  --logo-card-hover: #f8fafc;
 }
 
 * {
@@ -155,14 +161,14 @@ img {
 
 /* Responsive Section Spacing */
 .section-padding {
-  padding-top: 3.5rem;
-  padding-bottom: 3.5rem;
+  padding-top: 3.75rem;
+  padding-bottom: 3.75rem;
 }
 
 @media (min-width: 768px) {
   .section-padding {
-    padding-top: 4.75rem;
-    padding-bottom: 4.75rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
   }
 }
 
@@ -230,7 +236,7 @@ img {
 .card:hover {
   background: var(--bg-card-hover);
   border-color: var(--border-strong);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   box-shadow: var(--shadow-elevated);
 }
 
@@ -304,4 +310,125 @@ img {
   border: 1px solid var(--accent-gold);
   border-radius: var(--radius-sm);
   max-width: 100%;
+}
+
+/* ==========================================================================
+   DYNAMIC KEYFRAME ANIMATIONS
+   ========================================================================== */
+
+/* 1. Radar Pulse (Locations Map) */
+@keyframes radar-pulse {
+  0% {
+    r: 8;
+    opacity: 0.9;
+    stroke-width: 2;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    r: 28;
+    opacity: 0;
+    stroke-width: 0.5;
+  }
+}
+
+.radar-ring {
+  animation: radar-pulse 2.4s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
+  transform-origin: center;
+}
+
+.radar-ring-delayed {
+  animation: radar-pulse 2.4s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
+  animation-delay: 1.2s;
+  transform-origin: center;
+}
+
+/* 2. Beam Flow Along SVG Lines */
+@keyframes beam-flow {
+  0% {
+    stroke-dashoffset: 24;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animated-beam {
+  stroke-dasharray: 6 6;
+  animation: beam-flow 1.2s linear infinite;
+}
+
+/* 3. Infinite Smooth Marquee for Client Logos */
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  gap: 1.25rem;
+  width: max-content;
+  animation: marquee-scroll 32s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* 4. Shimmer Glow for Cards */
+@keyframes shimmer-sweep {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer-card:hover {
+  background: linear-gradient(
+    115deg,
+    var(--bg-card) 0%,
+    var(--bg-card-hover) 40%,
+    var(--accent-gold-soft) 50%,
+    var(--bg-card-hover) 60%,
+    var(--bg-card) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer-sweep 1.8s ease infinite;
+}
+
+/* 5. Smooth Step Transition */
+@keyframes step-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.step-content-animated {
+  animation: step-fade-in 0.35s ease-out forwards;
+}
+
+/* 6. Pulse Glow for VF Badge */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 var(--accent-gold-soft);
+  }
+  50% {
+    box-shadow: 0 0 16px 4px var(--accent-gold-soft);
+  }
+}
+
+.pulse-badge {
+  animation: pulse-glow 2.5s ease-in-out infinite;
 }
