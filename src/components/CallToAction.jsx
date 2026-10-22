@@ -29,7 +29,7 @@ export default function CallToAction({ t, onOpenRfq }) {
               fontWeight: 800,
               lineHeight: 1.2,
               marginBottom: '0.85rem',
-              color: '#ffffff'
+              color: 'var(--text-main)'
             }}>
               {t.cta.title}
             </h2>
@@ -74,9 +74,9 @@ export default function CallToAction({ t, onOpenRfq }) {
                   border: '1px solid rgba(34, 197, 94, 0.4)',
                   padding: '0.85rem 1.4rem',
                   borderRadius: '4px',
-                  color: '#86efac',
+                  color: '#16a34a',
                   fontSize: '0.88rem',
-                  fontWeight: 600
+                  fontWeight: 700
                 }}
               >
                 <MessageSquareText size={16} />

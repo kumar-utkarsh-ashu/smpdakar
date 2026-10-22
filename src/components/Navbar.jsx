@@ -37,56 +37,65 @@ export default function Navbar({
   };
 
   return (
-    <header style={{ position: 'sticky', top: 0, zIndex: 1000, width: '100%' }}>
+    <header style={{ 
+      position: 'sticky', 
+      top: 0, 
+      zIndex: 1000, 
+      width: '100%',
+      boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2)'
+    }}>
       {/* Top Utility Bar */}
       <div style={{ 
-        backgroundColor: 'rgba(5, 12, 22, 0.96)', 
-        borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+        backgroundColor: 'var(--topbar-bg)', 
+        borderBottom: '1px solid var(--border-subtle)',
         fontSize: '0.78rem',
-        padding: '0.35rem 0',
-        color: '#94a3b8'
+        padding: '0.4rem 0',
+        color: 'var(--topbar-text)'
       }}>
-        <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.4rem' }}>
+        <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
-              <MapPin size={12} style={{ color: 'var(--accent-gold)' }} />
+              <MapPin size={13} style={{ color: 'var(--accent-gold)' }} />
               <span>Dakar, Sénégal (Km 18, Rte de Rufisque)</span>
             </span>
-            <a href="tel:+221338326040" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', color: '#cbd5e1' }}>
-              <Phone size={12} style={{ color: 'var(--accent-gold)' }} />
+            <a href="tel:+221338326040" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', color: 'inherit' }}>
+              <Phone size={13} style={{ color: 'var(--accent-gold)' }} />
               <span>+221 33 832 60 40</span>
             </a>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             {/* Theme switcher */}
-            <select
-              value={theme}
-              onChange={(e) => setTheme(e.target.value)}
-              style={{
-                backgroundColor: 'rgba(255, 255, 255, 0.08)',
-                color: '#e2e8f0',
-                border: '1px solid rgba(255, 255, 255, 0.15)',
-                borderRadius: '4px',
-                padding: '0.15rem 0.4rem',
-                fontSize: '0.72rem',
-                fontWeight: 600,
-                cursor: 'pointer'
-              }}
-              title="Design Theme Direction"
-            >
-              <option value="sovereign">Option 1: Souverain (Parlym)</option>
-              <option value="industrial">Option 2: Industriel Lourd</option>
-              <option value="modern">Option 3: Moderne Épuré</option>
-            </select>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
+              <Palette size={13} style={{ color: 'var(--accent-gold)' }} />
+              <select
+                value={theme}
+                onChange={(e) => setTheme(e.target.value)}
+                style={{
+                  backgroundColor: 'rgba(255, 255, 255, 0.12)',
+                  color: '#ffffff',
+                  border: '1px solid var(--border-strong)',
+                  borderRadius: '4px',
+                  padding: '0.2rem 0.45rem',
+                  fontSize: '0.72rem',
+                  fontWeight: 600,
+                  cursor: 'pointer'
+                }}
+                title="Design Theme Direction"
+              >
+                <option value="sovereign" style={{ color: '#000000' }}>Option 1: Souverain (Parlym)</option>
+                <option value="industrial" style={{ color: '#000000' }}>Option 2: Industriel Lourd</option>
+                <option value="modern" style={{ color: '#000000' }}>Option 3: Moderne Épuré</option>
+              </select>
+            </div>
 
             {/* Language Switcher */}
-            <div style={{ display: 'inline-flex', alignItems: 'center', background: 'rgba(255, 255, 255, 0.1)', borderRadius: '4px', padding: '2px' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', background: 'rgba(255, 255, 255, 0.15)', borderRadius: '4px', padding: '2px' }}>
               <button
                 onClick={() => setLang('fr')}
                 style={{
                   background: lang === 'fr' ? 'var(--accent-gold)' : 'transparent',
-                  color: lang === 'fr' ? '#ffffff' : '#94a3b8',
+                  color: '#ffffff',
                   border: 'none',
                   padding: '0.15rem 0.45rem',
                   borderRadius: '3px',
@@ -101,7 +110,7 @@ export default function Navbar({
                 onClick={() => setLang('en')}
                 style={{
                   background: lang === 'en' ? 'var(--accent-gold)' : 'transparent',
-                  color: lang === 'en' ? '#ffffff' : '#94a3b8',
+                  color: '#ffffff',
                   border: 'none',
                   padding: '0.15rem 0.45rem',
                   borderRadius: '3px',
@@ -122,24 +131,24 @@ export default function Navbar({
         backgroundColor: 'var(--bg-secondary)',
         borderBottom: '1px solid var(--border-subtle)',
         backdropFilter: 'blur(16px)',
-        padding: '0.65rem 0'
+        padding: '0.75rem 0'
       }}>
         <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           {/* Logo */}
           <div 
             onClick={() => handleNavClick('home')}
-            style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', cursor: 'pointer', flexShrink: 0 }}
+            style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', cursor: 'pointer', flexShrink: 0 }}
           >
             <img 
               src="/images/logo_smp.png" 
               alt="SMP Structures Métalliques & Pipes" 
-              style={{ height: '40px', width: 'auto', objectFit: 'contain' }}
+              style={{ height: '42px', width: 'auto', objectFit: 'contain' }}
             />
             <div>
-              <div style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-main)', lineHeight: 1.1 }}>
+              <div style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--text-main)', lineHeight: 1.1 }}>
                 S.M.P.
               </div>
-              <div style={{ fontSize: '0.62rem', fontWeight: 700, letterSpacing: '0.06em', color: 'var(--accent-gold)', textTransform: 'uppercase' }}>
+              <div style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.06em', color: 'var(--accent-gold)', textTransform: 'uppercase' }}>
                 Structures Métalliques & Pipes • EPCI-VF
               </div>
             </div>
@@ -155,11 +164,11 @@ export default function Navbar({
                   background: 'none',
                   border: 'none',
                   color: activePage === link.id ? 'var(--accent-gold)' : 'var(--text-main)',
-                  fontWeight: activePage === link.id ? 700 : 500,
-                  fontSize: '0.88rem',
+                  fontWeight: activePage === link.id ? 700 : 600,
+                  fontSize: '0.9rem',
                   cursor: 'pointer',
                   position: 'relative',
-                  padding: '0.3rem 0',
+                  padding: '0.35rem 0',
                   transition: 'color 0.2s ease',
                   whiteSpace: 'nowrap'
                 }}
@@ -185,10 +194,10 @@ export default function Navbar({
             <button
               onClick={openRfq}
               className="btn-primary"
-              style={{ padding: '0.55rem 1rem', fontSize: '0.82rem' }}
+              style={{ padding: '0.6rem 1.1rem', fontSize: '0.85rem' }}
             >
               <span>{t.nav.rfqButton}</span>
-              <ArrowRight size={13} />
+              <ArrowRight size={14} />
             </button>
 
             {/* Mobile Hamburger Button */}
@@ -198,7 +207,7 @@ export default function Navbar({
                 background: 'none',
                 border: '1px solid var(--border-subtle)',
                 color: 'var(--text-main)',
-                padding: '0.4rem',
+                padding: '0.45rem',
                 borderRadius: '4px',
                 cursor: 'pointer',
                 display: 'inline-flex',
@@ -208,7 +217,7 @@ export default function Navbar({
               className="mobile-hamburger-btn"
               aria-label="Toggle navigation menu"
             >
-              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </div>
@@ -218,10 +227,10 @@ export default function Navbar({
           <div style={{
             backgroundColor: 'var(--bg-secondary)',
             borderTop: '1px solid var(--border-subtle)',
-            padding: '1rem',
+            padding: '1.25rem 1rem',
             marginTop: '0.65rem'
           }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               {navLinks.map((link) => (
                 <button
                   key={link.id}
@@ -231,21 +240,21 @@ export default function Navbar({
                     border: 'none',
                     color: activePage === link.id ? 'var(--accent-gold)' : 'var(--text-main)',
                     textAlign: 'left',
-                    fontSize: '0.95rem',
+                    fontSize: '1rem',
                     fontWeight: activePage === link.id ? 700 : 500,
-                    padding: '0.4rem 0',
+                    padding: '0.45rem 0',
                     cursor: 'pointer'
                   }}
                 >
                   {link.label}
                 </button>
               ))}
-              <div style={{ paddingTop: '0.75rem', borderTop: '1px solid var(--border-subtle)', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                <a href="tel:+221338326040" style={{ fontSize: '0.82rem', color: 'var(--accent-gold)', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                  <Phone size={13} /> +221 33 832 60 40
+              <div style={{ paddingTop: '0.85rem', borderTop: '1px solid var(--border-subtle)', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                <a href="tel:+221338326040" style={{ fontSize: '0.85rem', color: 'var(--accent-gold)', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                  <Phone size={14} /> +221 33 832 60 40
                 </a>
-                <a href="tel:+221773882121" style={{ fontSize: '0.82rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                  <Phone size={13} /> +221 77 388 21 21 (Mobile)
+                <a href="tel:+221773882121" style={{ fontSize: '0.85rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                  <Phone size={14} /> +221 77 388 21 21 (Mobile)
                 </a>
               </div>
             </div>

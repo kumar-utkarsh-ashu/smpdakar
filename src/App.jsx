@@ -42,8 +42,8 @@ export default function App() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', width: '100%', overflowX: 'hidden' }}>
-      {/* Primary Header */}
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', width: '100%' }}>
+      {/* Sticky Corporate Header */}
       <Navbar
         lang={lang}
         setLang={setLang}
@@ -59,7 +59,7 @@ export default function App() {
       <main style={{ flex: 1, width: '100%' }}>
         {activePage === 'home' ? (
           <>
-            {/* Section 1: Hero (Short hero inspired by Parlym layout) */}
+            {/* Section 1: Hero (Short hero per Parlym layout) */}
             <Hero
               t={t}
               onProjectsClick={() => scrollToSection('projects-section')}

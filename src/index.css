@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SMP DAKAR DESIGN SYSTEM - 100% RESPONSIVE VANILLA CSS
+   SMP DAKAR DESIGN SYSTEM - 100% RESPONSIVE & HIGH CONTRAST THEMES
    ========================================================================== */
 
 :root {
@@ -9,14 +9,14 @@
   --bg-card: rgba(13, 30, 56, 0.9);
   --bg-card-hover: rgba(18, 42, 77, 0.98);
   --bg-surface: #102644;
-  --border-subtle: rgba(255, 255, 255, 0.1);
-  --border-strong: rgba(255, 255, 255, 0.22);
+  --border-subtle: rgba(255, 255, 255, 0.12);
+  --border-strong: rgba(255, 255, 255, 0.25);
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
   --text-dim: #64748b;
   --accent-gold: #d97706;
   --accent-gold-hover: #b45309;
-  --accent-gold-soft: rgba(217, 119, 6, 0.15);
+  --accent-gold-soft: rgba(217, 119, 6, 0.16);
   --accent-blue: #0284c7;
   --accent-blue-soft: rgba(2, 132, 199, 0.15);
   --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -26,6 +26,10 @@
   --radius-lg: 12px;
   --shadow-card: 0 8px 24px -6px rgba(0, 0, 0, 0.4);
   --shadow-elevated: 0 16px 36px -10px rgba(0, 0, 0, 0.5);
+  --topbar-bg: #050c16;
+  --topbar-text: #94a3b8;
+  --map-land: #0e223d;
+  --map-text: #e2e8f0;
 }
 
 body.theme-industrial {
@@ -35,37 +39,45 @@ body.theme-industrial {
   --bg-card: rgba(26, 32, 40, 0.95);
   --bg-card-hover: rgba(35, 43, 54, 1);
   --bg-surface: #222933;
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-strong: rgba(234, 88, 12, 0.4);
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(234, 88, 12, 0.45);
   --text-main: #f3f4f6;
   --text-muted: #9ca3af;
   --text-dim: #6b7280;
   --accent-gold: #ea580c;
   --accent-gold-hover: #c2410c;
-  --accent-gold-soft: rgba(234, 88, 12, 0.16);
+  --accent-gold-soft: rgba(234, 88, 12, 0.18);
   --accent-blue: #f59e0b;
   --accent-blue-soft: rgba(245, 158, 11, 0.15);
+  --topbar-bg: #090b0d;
+  --topbar-text: #9ca3af;
+  --map-land: #1c222b;
+  --map-text: #f3f4f6;
 }
 
 body.theme-modern {
-  /* Option 3 - Modern Strategic Infrastructure (Pristine Light Slate & Cyan) */
-  --bg-primary: #f8fafc;
+  /* Option 3 - Modern Strategic Infrastructure (Pristine High-Contrast Slate & Cyan) */
+  --bg-primary: #f1f5f9;
   --bg-secondary: #ffffff;
-  --bg-card: rgba(255, 255, 255, 0.98);
-  --bg-card-hover: #ffffff;
-  --bg-surface: #f1f5f9;
-  --border-subtle: rgba(15, 23, 42, 0.1);
-  --border-strong: rgba(13, 148, 136, 0.35);
-  --text-main: #0f172a;
-  --text-muted: #475569;
-  --text-dim: #94a3b8;
-  --accent-gold: #0d9488;
-  --accent-gold-hover: #0f766e;
-  --accent-gold-soft: rgba(13, 148, 136, 0.14);
-  --accent-blue: #0284c7;
-  --accent-blue-soft: rgba(2, 132, 199, 0.12);
-  --shadow-card: 0 4px 18px -4px rgba(15, 23, 42, 0.07);
-  --shadow-elevated: 0 12px 30px -8px rgba(15, 23, 42, 0.1);
+  --bg-card: #ffffff;
+  --bg-card-hover: #f8fafc;
+  --bg-surface: #e2e8f0;
+  --border-subtle: #cbd5e1;
+  --border-strong: #94a3b8;
+  --text-main: #0f172a; /* Ultra-crisp black-slate */
+  --text-muted: #334155; /* High contrast dark text */
+  --text-dim: #64748b;
+  --accent-gold: #0284c7; /* Vibrant Engineering Blue */
+  --accent-gold-hover: #0369a1;
+  --accent-gold-soft: rgba(2, 132, 199, 0.12);
+  --accent-blue: #0f766e;
+  --accent-blue-soft: rgba(15, 118, 110, 0.12);
+  --shadow-card: 0 4px 18px rgba(15, 23, 42, 0.08);
+  --shadow-elevated: 0 12px 28px rgba(15, 23, 42, 0.12);
+  --topbar-bg: #0f172a;
+  --topbar-text: #cbd5e1;
+  --map-land: #cbd5e1;
+  --map-text: #0f172a;
 }
 
 * {
@@ -80,14 +92,14 @@ html {
   font-family: var(--font-body);
   background-color: var(--bg-primary);
   color: var(--text-main);
-  transition: background-color 0.3s ease, color 0.3s ease;
-  overflow-x: hidden;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  overflow-x: clip;
 }
 
 body {
   min-height: 100vh;
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: clip;
   width: 100%;
   -webkit-font-smoothing: antialiased;
 }
@@ -99,13 +111,11 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.25;
   color: var(--text-main);
   overflow-wrap: break-word;
-  word-wrap: break-word;
 }
 
 p {
   color: var(--text-muted);
   overflow-wrap: break-word;
-  word-wrap: break-word;
 }
 
 a {
@@ -145,21 +155,14 @@ img {
 
 /* Responsive Section Spacing */
 .section-padding {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
 }
 
 @media (min-width: 768px) {
   .section-padding {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-  }
-}
-
-@media (max-width: 639px) {
-  .section-padding {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    padding-top: 4.75rem;
+    padding-bottom: 4.75rem;
   }
 }
 
@@ -198,6 +201,7 @@ img {
   font-weight: 800;
   margin-bottom: 0.85rem;
   line-height: 1.2;
+  color: var(--text-main);
 }
 
 .section-desc {
@@ -226,7 +230,7 @@ img {
 .card:hover {
   background: var(--bg-card-hover);
   border-color: var(--border-strong);
-  transform: translateY(-3px);
+  transform: translateY(-2px);
   box-shadow: var(--shadow-elevated);
 }
 
@@ -237,7 +241,7 @@ img {
   gap: 0.5rem;
   padding: 0.8rem 1.6rem;
   background-color: var(--accent-gold);
-  color: #ffffff;
+  color: #ffffff !important;
   font-weight: 700;
   font-size: 0.92rem;
   border-radius: var(--radius-sm);
@@ -260,7 +264,7 @@ img {
   justify-content: center;
   gap: 0.5rem;
   padding: 0.8rem 1.6rem;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: var(--accent-gold-soft);
   color: var(--text-main);
   font-weight: 600;
   font-size: 0.92rem;
@@ -275,7 +279,6 @@ img {
 .btn-secondary:hover {
   border-color: var(--accent-gold);
   color: var(--accent-gold);
-  background-color: var(--accent-gold-soft);
 }
 
 @media (max-width: 480px) {
@@ -301,20 +304,4 @@ img {
   border: 1px solid var(--accent-gold);
   border-radius: var(--radius-sm);
   max-width: 100%;
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: var(--bg-primary);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--bg-surface);
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-gold);
 }

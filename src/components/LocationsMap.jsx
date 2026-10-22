@@ -62,14 +62,14 @@ export default function LocationsMap({ t }) {
           <p className="section-desc">{t.locations.desc}</p>
         </div>
 
-        {/* Interactive Map Layout - 100% Mobile Responsive */}
+        {/* Interactive Map Layout */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
           gap: '1.5rem',
           alignItems: 'start'
         }}>
-          {/* Vector Map Visualization (Lightweight SVG) */}
+          {/* Vector Map Visualization (Lightweight SVG with theme contrast) */}
           <div style={{
             backgroundColor: 'var(--bg-surface)',
             border: '1px solid var(--border-strong)',
@@ -89,12 +89,12 @@ export default function LocationsMap({ t }) {
               </span>
             </div>
 
-            {/* Custom stylized vector chart */}
+            {/* SVG adapted to dark and light modes */}
             <div style={{ position: 'relative', width: '100%', height: 'auto', minHeight: '240px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <svg viewBox="0 0 500 400" style={{ width: '100%', height: 'auto', maxHeight: '300px' }}>
                 <path 
                   d="M 60 120 Q 90 80, 150 70 Q 230 60, 310 90 Q 370 110, 420 180 Q 400 280, 320 320 Q 240 330, 160 300 Q 110 260, 80 200 Z" 
-                  fill="rgba(15, 33, 58, 0.9)" 
+                  fill="var(--map-land)" 
                   stroke="var(--border-strong)" 
                   strokeWidth="2"
                 />
@@ -107,23 +107,23 @@ export default function LocationsMap({ t }) {
 
                 <circle cx="90" cy="180" r="14" fill="var(--accent-gold-soft)" stroke="var(--accent-gold)" strokeWidth="2" />
                 <circle cx="90" cy="180" r="6" fill="var(--accent-gold)" />
-                <text x="75" y="155" fill="#ffffff" fontSize="12" fontWeight="800" textAnchor="middle">DAKAR HQ</text>
+                <text x="75" y="155" fill="var(--map-text)" fontSize="12" fontWeight="800" textAnchor="middle">DAKAR HQ</text>
                 <text x="75" y="168" fill="var(--accent-gold)" fontSize="9" fontWeight="700" textAnchor="middle">15 000 m²</text>
 
-                <circle cx="110" cy="200" r="6" fill="#38bdf8" />
-                <text x="135" y="204" fill="#cbd5e1" fontSize="10" fontWeight="600">Gambie</text>
+                <circle cx="110" cy="200" r="6" fill="#0284c7" />
+                <text x="135" y="204" fill="var(--map-text)" fontSize="10" fontWeight="700">Gambie</text>
 
-                <circle cx="180" cy="120" r="6" fill="#38bdf8" />
-                <text x="195" y="124" fill="#cbd5e1" fontSize="10" fontWeight="600">Mauritanie</text>
+                <circle cx="180" cy="120" r="6" fill="#0284c7" />
+                <text x="195" y="124" fill="var(--map-text)" fontSize="10" fontWeight="700">Mauritanie</text>
 
-                <circle cx="220" cy="210" r="6" fill="#38bdf8" />
-                <text x="235" y="214" fill="#cbd5e1" fontSize="10" fontWeight="600">Mali</text>
+                <circle cx="220" cy="210" r="6" fill="#0284c7" />
+                <text x="235" y="214" fill="var(--map-text)" fontSize="10" fontWeight="700">Mali</text>
 
-                <circle cx="150" cy="260" r="6" fill="#38bdf8" />
-                <text x="165" y="264" fill="#cbd5e1" fontSize="10" fontWeight="600">Guinée</text>
+                <circle cx="150" cy="260" r="6" fill="#0284c7" />
+                <text x="165" y="264" fill="var(--map-text)" fontSize="10" fontWeight="700">Guinée</text>
 
-                <circle cx="270" cy="280" r="6" fill="#38bdf8" />
-                <text x="285" y="284" fill="#cbd5e1" fontSize="10" fontWeight="600">Côte d'Ivoire</text>
+                <circle cx="270" cy="280" r="6" fill="#0284c7" />
+                <text x="285" y="284" fill="var(--map-text)" fontSize="10" fontWeight="700">Côte d'Ivoire</text>
               </svg>
             </div>
 
@@ -141,17 +141,18 @@ export default function LocationsMap({ t }) {
                   key={idx}
                   onClick={() => setSelectedCountry(idx)}
                   style={{
-                    backgroundColor: isSelected ? 'var(--bg-surface)' : 'var(--bg-card)',
+                    backgroundColor: isSelected ? 'var(--bg-card-hover)' : 'var(--bg-card)',
                     border: isSelected ? '1px solid var(--accent-gold)' : '1px solid var(--border-subtle)',
                     borderRadius: '8px',
                     padding: '1rem',
                     cursor: 'pointer',
-                    transition: 'all 0.2s ease'
+                    transition: 'all 0.2s ease',
+                    boxShadow: isSelected ? '0 4px 14px rgba(0,0,0,0.1)' : 'none'
                   }}
                 >
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.3rem', flexWrap: 'wrap', gap: '0.35rem' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                      <MapPin size={15} style={{ color: c.hub ? 'var(--accent-gold)' : '#38bdf8' }} />
+                      <MapPin size={15} style={{ color: c.hub ? 'var(--accent-gold)' : '#0284c7' }} />
                       <span style={{ fontWeight: 700, fontSize: '0.95rem', color: 'var(--text-main)' }}>
                         {c.name}
                       </span>

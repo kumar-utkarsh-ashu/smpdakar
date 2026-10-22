@@ -25,9 +25,9 @@ export default function QHSE({ t }) {
         {/* 4 Pillars Grid */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-          gap: '1.5rem',
-          marginBottom: '2.5rem'
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))',
+          gap: '1.25rem',
+          marginBottom: '2rem'
         }}>
           {t.qhse.pillars.map((p, idx) => (
             <div 
@@ -36,12 +36,12 @@ export default function QHSE({ t }) {
               style={{
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '0.85rem'
+                gap: '0.75rem'
               }}
             >
               <div style={{
-                width: '42px',
-                height: '42px',
+                width: '40px',
+                height: '40px',
                 borderRadius: '6px',
                 backgroundColor: 'var(--accent-gold-soft)',
                 display: 'flex',
@@ -52,42 +52,42 @@ export default function QHSE({ t }) {
                 {icons[idx]}
               </div>
 
-              <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: 'var(--text-main)' }}>
+              <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-main)' }}>
                 {p.title}
               </h3>
 
-              <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
+              <p style={{ fontSize: '0.86rem', color: 'var(--text-muted)', lineHeight: 1.55 }}>
                 {p.desc}
               </p>
             </div>
           ))}
         </div>
 
-        {/* Certification Badges Banner */}
+        {/* Certification Badges Banner with high contrast */}
         <div style={{
           backgroundColor: 'var(--bg-surface)',
           border: '1px solid var(--border-strong)',
           borderRadius: '8px',
-          padding: '1.5rem 2rem',
+          padding: 'clamp(1rem, 2.5vw, 1.5rem)',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
           flexWrap: 'wrap',
-          gap: '1.25rem'
+          gap: '1rem'
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <ShieldCheck size={28} style={{ color: 'var(--accent-gold)' }} />
+            <ShieldCheck size={26} style={{ color: 'var(--accent-gold)' }} />
             <div>
-              <div style={{ fontWeight: 800, fontSize: '0.95rem', color: '#ffffff' }}>
+              <div style={{ fontWeight: 800, fontSize: '0.92rem', color: 'var(--text-main)' }}>
                 Conformité aux Standards Internationaux
               </div>
-              <div style={{ fontSize: '0.75rem', color: 'var(--text-dim)' }}>
+              <div style={{ fontSize: '0.74rem', color: 'var(--text-dim)' }}>
                 Vérifications continues et audits tierce partie
               </div>
             </div>
           </div>
 
-          <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
             {t.qhse.certifications.map((cert, idx) => (
               <span
                 key={idx}
@@ -95,13 +95,14 @@ export default function QHSE({ t }) {
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '0.35rem',
-                  backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                  backgroundColor: 'var(--bg-card)',
                   border: '1px solid var(--border-subtle)',
-                  padding: '0.4rem 0.85rem',
+                  padding: '0.35rem 0.75rem',
                   borderRadius: '4px',
-                  fontSize: '0.8rem',
+                  fontSize: '0.78rem',
                   fontWeight: 700,
-                  color: '#e2e8f0'
+                  color: 'var(--text-main)',
+                  boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
                 }}
               >
                 <CheckCircle size={13} style={{ color: 'var(--accent-gold)' }} />
